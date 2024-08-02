@@ -13,7 +13,7 @@ services:
     ports:
       - 27017:27017
     networks:
-      - backend1
+      - backend
 
   mongo-express:
     image: mongo-express
@@ -27,22 +27,20 @@ services:
     depends_on:
       - mongodb
     networks:
-      - frontend1
-      - backend1
+      - frontend
+      - backend
 
 volumes:
   mongo-db:
 
 networks:
-  backend1:
+  backend:
     driver: bridge
     ipam:
-      driver: default
       config:
         - subnet: 10.2.0.0/16
-  frontend1:
+  frontend:
     driver: bridge
     ipam:
-      driver: default
       config:
         - subnet: 10.1.0.0/16
